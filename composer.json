@@ -1,0 +1,33 @@
+{
+    "name": "respinar/airquality",
+    "description":"Air Quality module for Contao",
+    "keywords":["contao", "air quality"],
+    "type": "contao-module",
+    "homepage":"https://github.com/respinar/airquality",
+    "license":"LGPL-3.0+",
+    "authors":[
+        {
+            "name":"Hamid Abbaszadeh",
+            "email":"info@respinar.com",
+            "homepage":"http://respinar",
+            "role":"Developer"
+        }
+    ],
+    "support":{
+        "issues":"https://github.com/respinar/airquality/issues"
+    },
+    "require": {
+        "contao/core": ">=3.2,<4-dev",
+        "contao-community-alliance/composer-installer": "*"
+    },
+    "autoload": {
+        "classmap": [""]
+    },
+    "extra": {
+        "contao": {
+            "sources": {
+                "": "system/modules/airquality"
+            }
+        }
+    }
+}
