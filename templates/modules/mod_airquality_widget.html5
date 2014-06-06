@@ -1,0 +1,32 @@
+
+<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+
+  <?php if ($this->headline): ?>
+    <<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+  <?php endif; ?>
+
+  <p class="city">کیفیت هوای <?php echo $this->city; ?></p>
+  <p class="date">امروز <?php echo $this->date; ?></p>
+  <p class="level">کیفیت هوا <?php echo $GLOBALS['TL_LANG']['MSC']['level'][$this->citymaxaqi[level]]; ?> است.</p>
+
+  <div class="maxaqi <?php echo $this->citymaxaqi[level]; ?>"><?php echo $this->citymaxaqi[value]; ?></div>
+
+
+  <?php foreach($this->airqualitycharts as $chart) echo $chart; ?>
+
+  <a href="<?php echo $this->link; ?>">مشاهده گزارش کامل</a>
+  <div class="source">منبع: <?php echo $this->source; ?></div>
+
+  <div class="legend">
+	<h5>راهنمای رنگ‌های شاخص کیفیت</h5>
+	<p class="good">خوب</p>
+	<p class="moderate">متوسط</p>
+	<p class="unhealthysg">ناسالم برای گروه خاص</p>
+	<p class="unhealthy">ناسالم</p>
+	<p class="veryunhealthy">خیلی ناسالم</p>
+	<p class="hazardous">خطرناک</p>
+  </div>
+
+</div>
+
+
