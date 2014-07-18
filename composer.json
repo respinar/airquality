@@ -18,8 +18,7 @@
     },
     "require": {
         "contao/core": ">=3.2,<4-dev",
-        "contao-community-alliance/composer-installer": "*",
-        "respinar/persiandate": ">=0.1.0"
+        "contao-community-alliance/composer-installer": "*"
     },
     "autoload": {
         "classmap": [""]
