@@ -203,7 +203,7 @@ class tl_airquality_data extends Backend
 			$aqitext = $aqitext . ' <span class="aqi '.$max.$aqiv[level].'">'.$aqiv[parameter].' ('.$aqiv[value].')</span>';
 		}
 
-		return '<div>'.PersianDate::date('Y/m/d',$arrRow['date']).' '. $aqitext.'</div>';
+		return '<div>'.Date::parse('Y/m/d',$arrRow['date']).' '. $aqitext.'</div>';
 	}
 
 }
