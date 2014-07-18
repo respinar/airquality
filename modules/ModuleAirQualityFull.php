@@ -92,7 +92,7 @@ class ModuleAirQualityFull extends \Module
 		$objAirQualityCity = \AirQualityCityModel::findByAlias(\Input::get('items'));
 
 		$this->Template->city   = $objAirQualityCity->title;
-		$this->Template->date   = \PersianDate::date('l j F Y');
+		$this->Template->date   = \Date::parse('l j F Y');
 		$this->Template->source = $objAirQualityCity->source;
 
 		$objAirQualityStaions = \AirQualityStationModel::findByPid($objAirQualityCity->id);
@@ -120,7 +120,7 @@ class ModuleAirQualityFull extends \Module
 					$arrAirQuality = array
 										(
 											'station' => $objStation->title,
-											'date'    => \PersianDate::date('l j F',$objAirQualityData->date),
+											'date'    => \Date::parse('l j F',$objAirQualityData->date),
 											'aqi'     => $aqis,
 											'maxaqi'  => $maxaqi
 										);
@@ -169,7 +169,7 @@ class ModuleAirQualityFull extends \Module
 				while($objAirQualityData->next())
 				{
 					$aqi = new \AirQuality($objAirQualityData);
-					$arrAirQualityAll[$objStation->title][\PersianDate::date('m/d',$objAirQualityData->date)] = $aqi->AirQualityIndexes;
+					$arrAirQualityAll[$objStation->title][\Date::parse('m/d',$objAirQualityData->date)] = $aqi->AirQualityIndexes;
 				}
 			}
 

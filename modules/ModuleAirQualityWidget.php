@@ -86,7 +86,7 @@ class ModuleAirQualityWidget extends \Module
 
 		$this->Template->city   = $objAirQualityCity->title;
 		$this->Template->source = $objAirQualityCity->source;
-		$this->Template->date = \PersianDate::date('l j F');
+		$this->Template->date = \Date::parse('l j F');
 		$this->Template->link  = strlen($strLink) ? sprintf($strLink, $objAirQualityCity->alias) : '';
 
 
@@ -115,7 +115,7 @@ class ModuleAirQualityWidget extends \Module
 					$arrAirQuality = array
 										(
 											'station' => $objStation->title,
-											'date'    => \PersianDate::date('l j F',$objAirQualityData->date),
+											'date'    => \Date::parse('l j F',$objAirQualityData->date),
 											'aqi'     => $aqis,
 											'maxaqi'  => $maxaqi
 										);
