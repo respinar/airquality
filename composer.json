@@ -17,8 +17,8 @@
         "issues":"https://github.com/respinar/airquality/issues"
     },
     "require": {
-        "contao/core": ">=3.2,<4-dev",
-        "contao-community-alliance/composer-installer": "*"
+        "php": ">=5.3.2",
+        "contao/core": ">=3.2,<4-dev"
     },
     "autoload": {
         "classmap": [""]
