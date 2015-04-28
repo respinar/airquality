@@ -146,11 +146,11 @@ class ModuleAirQualityFull extends \Module
 				}
 			}
 
-			foreach ($arrAirQuality as $AQ)
-			{
-				if ($citymaxaqi < $AQ[maxaqi])
-					$citymaxaqi = $AQ[maxaqi];
-			}
+			//foreach ($arrAirQuality as $AQ)
+			//{
+				//if ($citymaxaqi < $AQ[maxaqi])
+					//$citymaxaqi = $AQ[maxaqi];
+			//}
 
 			$this->Template->citymaxaqi = $arrCityMaxAQI;
 			if ($arrAirQualityCharts)
