@@ -46,7 +46,5 @@ TemplateLoader::addFiles(array
 (
 	'mod_airquality_full'   => 'system/modules/airquality/templates/modules',
 	'mod_airquality_widget' => 'system/modules/airquality/templates/modules',
-	'mod_airquality_empty'  => 'system/modules/airquality/templates/modules',
-	'chartempty'            => 'system/modules/airquality/templates/charts',
 	'charts_bar'            => 'system/modules/airquality/templates/charts',
 ));
