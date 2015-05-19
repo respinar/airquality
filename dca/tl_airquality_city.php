@@ -3,12 +3,12 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2014 Leo Feyer
+ * Copyright (c) 2005-2015 Leo Feyer
  *
  * @package   AirQuality
  * @author    Hamid Abbaszadeh
  * @license   GNU/LGPL
- * @copyright 2014
+ * @copyright 2015
  */
 
 
@@ -113,7 +113,7 @@ $GLOBALS['TL_DCA']['tl_airquality_city'] = array
 		),
 		'title' => array
 		(
-			'label'					  => &$GLOBALS['TL_LANG']['tl_airquality_city']['title'],
+			'label'				        	  => &$GLOBALS['TL_LANG']['tl_airquality_city']['title'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
@@ -131,7 +131,7 @@ $GLOBALS['TL_DCA']['tl_airquality_city'] = array
 		),
 		'source' => array
 		(
-			'label'					  => &$GLOBALS['TL_LANG']['tl_airquality_city']['source'],
+			'label'				        	  => &$GLOBALS['TL_LANG']['tl_airquality_city']['source'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',

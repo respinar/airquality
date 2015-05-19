@@ -3,12 +3,12 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2014 Leo Feyer
+ * Copyright (c) 2005-2015 Leo Feyer
  *
  * @package   AirQuality
  * @author    Hamid Abbaszadeh
  * @license   GNU/LGPL
- * @copyright 2014
+ * @copyright 2015
  */
 
 /**
@@ -86,7 +86,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['chartSize'] = array
  * Class tl_links
  *
  * Provide miscellaneous methods that are used by the data configuration array.
- * @copyright  Hamid Abbaszadeh 2014
+ * @copyright  Hamid Abbaszadeh 2015
  * @author     Hamid Abbaszadeh <http://respinar.com>
  * @package    Links
  */

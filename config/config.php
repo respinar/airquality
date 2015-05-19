@@ -3,12 +3,12 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2014 Leo Feyer
+ * Copyright (c) 2005-2015 Leo Feyer
  *
  * @package   AirQuality
  * @author    Hamid Abbaszadeh
  * @license   GNU/LGPL
- * @copyright 2014
+ * @copyright 2015
  */
 
 array_insert($GLOBALS['BE_MOD']['content'], 1, array

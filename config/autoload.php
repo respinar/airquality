@@ -3,7 +3,7 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2014 Leo Feyer
+ * Copyright (c) 2005-2015 Leo Feyer
  *
  * @package Airquality
  * @link    https://contao.org
@@ -46,5 +46,7 @@ TemplateLoader::addFiles(array
 (
 	'mod_airquality_full'   => 'system/modules/airquality/templates/modules',
 	'mod_airquality_widget' => 'system/modules/airquality/templates/modules',
+	'mod_airquality_empty'  => 'system/modules/airquality/templates/modules',
+	'chartempty'            => 'system/modules/airquality/templates/charts',
 	'charts_bar'            => 'system/modules/airquality/templates/charts',
 ));

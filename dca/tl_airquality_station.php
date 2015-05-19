@@ -3,12 +3,12 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2014 Leo Feyer
+ * Copyright (c) 2005-2015 Leo Feyer
  *
  * @package   AirQuality
  * @author    Hamid Abbaszadeh
  * @license   GNU/LGPL
- * @copyright 2014
+ * @copyright 2015
  */
 
 
@@ -99,7 +99,7 @@ $GLOBALS['TL_DCA']['tl_airquality_station'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default' 					=> '{title_legend},title,alias;'
+		'default' 				      	=> '{title_legend},title,alias;'
 	),
 
 	// Fields
@@ -128,7 +128,7 @@ $GLOBALS['TL_DCA']['tl_airquality_station'] = array
 		),
 		'title' => array
 		(
-			'label'					  => &$GLOBALS['TL_LANG']['tl_airquality_station']['title'],
+			'label'					          => &$GLOBALS['TL_LANG']['tl_airquality_station']['title'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',

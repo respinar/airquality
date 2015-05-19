@@ -3,12 +3,12 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2014 Leo Feyer
+ * Copyright (c) 2005-2015 Leo Feyer
  *
  * @package   AirQuality
  * @author    Hamid Abbaszadeh
  * @license   GNU/LGPL
- * @copyright 2014
+ * @copyright 2015
  */
 
 
@@ -21,7 +21,7 @@ namespace AirQuality;
 /**
  * Class ModuleAirQualityWidget
  *
- * @copyright  2014
+ * @copyright  2015
  * @author     Hamid Abbaszadeh
  * @package    Devtools
  */
@@ -86,8 +86,8 @@ class ModuleAirQualityWidget extends \Module
 
 		$this->Template->city   = $objAirQualityCity->title;
 		$this->Template->source = $objAirQualityCity->source;
-		$this->Template->date = \Date::parse('l j F');
-		$this->Template->link  = strlen($strLink) ? sprintf($strLink, $objAirQualityCity->alias) : '';
+		$this->Template->date   = \Date::parse('l j F');
+		$this->Template->link   = strlen($strLink) ? sprintf($strLink, $objAirQualityCity->alias) : '';
 
 
 		$objAirQualityStaions = \AirQualityStationModel::findByPid($this->airquality_city);
@@ -108,9 +108,9 @@ class ModuleAirQualityWidget extends \Module
 
 				if ($objAirQualityData !== null)
 				{
-					$aqi    = new \AirQuality($objAirQualityData);
-					$aqis   = $aqi->AirQualityIndexes;
-					$maxaqi = $aqi->AirQualityIndex;
+
+					$aqis   = deserialize($objAirQualityData->AQI_ALL);
+					$maxaqi = deserialize($objAirQualityData->AQI_MAX);
 
 					$arrAirQuality = array
 										(
@@ -140,13 +140,6 @@ class ModuleAirQualityWidget extends \Module
 					}
 				}
 			}
-
-
-			//foreach ($arrAirQuality as $AQ)
-			//{
-			//	if ($citymaxaqi < $AQ['maxaqi']['value'])
-			//		$citymaxaqi = $AQ['maxaqi']['value'];
-			//}
 
 			$this->Template->citymaxaqi = $arrCityMaxAQI;
 
