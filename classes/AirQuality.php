@@ -102,81 +102,33 @@ class AirQuality
 				 )
 	);
 
+	/**
+	* Return AirQualityIndexes and AirQualityIndex
+	**/
+
 	function __construct($data)
 	{
 
-		if (is_object($data)){
-			$O3 = deserialize($data->O3);
-			$rawdata = array
-			(
-				'PM25' => $data->PM25,
-				'PM10' => $data->PM10,
-				'CO'  => $data->CO,
-				'NO2' => $data->NO2,
-				'SO2' => $data->SO2,
-				'O31' => $O3[0],
-				'O38' => $O3[1]
-			);
-		} else {
-			$O3 = deserialize($data[O3]);
-			$rawdata = array
-			(
-				'PM25' => $data['PM25'],
-				'PM10' => $data['PM10'],
-				'CO'  => $data['CO'],
-				'NO2' => $data['NO2'],
-				'SO2' => $data['SO2'],
-				'O31' => $O3[0],
-				'O38' => $O3[1]
-			);
-		}
+		$O3 = deserialize($data->O3);
+		$rawdata = array
+		(
+			'PM25' => $data->PM25,
+			'PM10' => $data->PM10,
+			'CO'  => $data->CO,
+			'NO2' => $data->NO2,
+			'SO2' => $data->SO2,
+			'O31' => $O3[0],
+			'O38' => $O3[1]
+		);
 
 		$this->AirQualityIndexes = $this->aqi($rawdata);
 		$this->AirQualityIndex   = $this->maxaqi($this->AirQualityIndexes);
 		return;
 	}
 
-	function maxaqi($data)
-	{
-
-		$max_value = 0;
-
-		foreach($data as $key => $aqi)
-		{
-			if ($aqi[value] > $max_value)
-			{
-				$max_key   = $key;
-				$max_value = $aqi[value];
-			}
-		}
-
-		return $data[$max_key];
-	}
-
-	function calc_aqi($parameter,$value)
-	{
-
-		foreach($this->arrBreakPoints[$parameter] as $arrBreakPoint)
-		{
-			if ($arrBreakPoint[0] <= $value && $value < $arrBreakPoint[1])
-			{
-				$breakpoint_lo = $arrBreakPoint[0];
-				$breakpoint_hi = $arrBreakPoint[1];
-				$index_lo      = $arrBreakPoint[2];
-				$index_hi      = $arrBreakPoint[3];
-				break;
-			}
-		}
-
-		if (($breakpoint_hi - $breakpoint_lo) != 0)
-		{
-			$aqi = (($index_hi - $index_lo) / ($breakpoint_hi - $breakpoint_lo))*($value - $breakpoint_lo) + $index_lo;
-		} else {
-			$aqi = 0;
-		}
-
-		return $aqi;
-	}
+	/**
+	* Calculate AirQualityIndexes
+	**/
 
 	function aqi($rawData)
 	{
@@ -199,6 +151,59 @@ class AirQuality
 		return $result;
 	}
 
+	/**
+	* Return AirQualityIndex
+	*/
+
+	function maxaqi($data)
+	{
+		$max_value = 0;
+
+		foreach($data as $key => $aqi)
+		{
+			if ($aqi[value] > $max_value)
+			{
+				$max_key   = $key;
+				$max_value = $aqi[value];
+			}
+		}
+
+		return $data[$max_key];
+	}
+
+
+	/**
+	* Calculate AirQualityIndexes
+	**/
+
+	function calc_aqi($parameter,$value)
+	{
+		foreach($this->arrBreakPoints[$parameter] as $arrBreakPoint)
+		{
+			if ($arrBreakPoint[0] <= $value && $value < $arrBreakPoint[1])
+			{
+				$breakpoint_lo = $arrBreakPoint[0];
+				$breakpoint_hi = $arrBreakPoint[1];
+				$index_lo      = $arrBreakPoint[2];
+				$index_hi      = $arrBreakPoint[3];
+				break;
+			}
+		}
+
+		if (($breakpoint_hi - $breakpoint_lo) != 0)
+		{
+			$aqi = (($index_hi - $index_lo) / ($breakpoint_hi - $breakpoint_lo))*($value - $breakpoint_lo) + $index_lo;
+		} else {
+			$aqi = 0;
+		}
+
+		return $aqi;
+	}
+
+
+	/**
+	* Return AirQualityIndexes Colors
+	**/
 
 	function aqi_color($_aqi)
 	{
@@ -214,6 +219,10 @@ class AirQuality
 
 		return $_color;
 	}
+
+	/**
+	* Return AirQualityIndexes Level
+	*/
 
 	function aqi_level($_aqi)
 	{

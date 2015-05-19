@@ -23,7 +23,7 @@ namespace AirQuality;
  *
  * @copyright  2015
  * @author     Hamid Abbaszadeh
- * @package    Devtools
+ * @package    AirQuality
  */
 class ModuleAirQualityWidget extends \Module
 {
