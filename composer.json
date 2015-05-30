@@ -27,6 +27,12 @@
         "contao": {
             "sources": {
                 "": "system/modules/airquality"
+            },
+            "transifex": {
+                "project": "contao-airquality",
+                "prefix": "master-",
+                "languages_cto": "languages",
+                "languages_tx": ".tx"
             }
         }
     }
