@@ -9,7 +9,7 @@
         {
             "name":"Hamid Abbaszadeh",
             "email":"info@respinar.com",
-            "homepage":"http://respinar",
+            "homepage":"http://respinar.com",
             "role":"Developer"
         }
     ],
@@ -17,8 +17,9 @@
         "issues":"https://github.com/respinar/airquality/issues"
     },
     "require": {
-        "contao/core": ">=3.2,<4-dev",
-        "contao-community-alliance/composer-installer": "*"
+        "php":">=5.3.2",
+        "contao/core":">=3.2,<4-dev",
+        "contao-community-alliance/composer-plugin": "~2.0"        
     },
     "autoload": {
         "classmap": [""]
