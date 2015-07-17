@@ -72,12 +72,6 @@ $GLOBALS['TL_DCA']['tl_airquality_city'] = array
 				'href'                => 'act=edit',
 				'icon'                => 'header.gif'
 			),
-			'copy' => array
-			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_airquality_city']['copy'],
-				'href'                => 'act=copy',
-				'icon'                => 'copy.gif'
-			),
 			'delete' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_airquality_city']['delete'],
@@ -97,7 +91,7 @@ $GLOBALS['TL_DCA']['tl_airquality_city'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default' 					=> '{title_legend},title,alias;{properties_legend},source;{description_legend:hide},description;'
+		'default' 					=> '{title_legend},title,alias;{redirect_legend},jumpTo;{properties_legend},source;{description_legend:hide},description;'
 	),
 
 	// Fields
@@ -128,6 +122,16 @@ $GLOBALS['TL_DCA']['tl_airquality_city'] = array
 			'inputType'               => 'text',
 			'eval'                    => array('mandatory'=>true, 'rgxp'=>'alias','unique'=>true,'maxlength'=>128, 'tl_class'=>'w50'),
 			'sql'                     => "varchar(128) NOT NULL default ''"
+		),
+		'jumpTo' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_airquality_city']['jumpTo'],
+			'exclude'                 => true,
+			'inputType'               => 'pageTree',
+			'foreignKey'              => 'tl_page.title',
+			'eval'                    => array('mandatory'=>true, 'fieldType'=>'radio'),
+			'sql'                     => "int(10) unsigned NOT NULL default '0'",
+			'relation'                => array('type'=>'hasOne', 'load'=>'eager')
 		),
 		'source' => array
 		(
