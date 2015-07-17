@@ -5,9 +5,7 @@
  *
  * Copyright (c) 2005-2015 Leo Feyer
  *
- * @package Airquality
- * @link    https://contao.org
- * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
+ * @license LGPL-3.0+
  */
 
 
@@ -29,13 +27,14 @@ ClassLoader::addClasses(array
 	'AirQuality\AirQuality'             => 'system/modules/airquality/classes/AirQuality.php',
 
 	// Models
-	'AirQuality\AirQualityDataModel'    => 'system/modules/airquality/models/AirQualityDataModel.php',
 	'AirQuality\AirQualityCityModel'    => 'system/modules/airquality/models/AirQualityCityModel.php',
+	'AirQuality\AirQualityDataModel'    => 'system/modules/airquality/models/AirQualityDataModel.php',
 	'AirQuality\AirQualityStationModel' => 'system/modules/airquality/models/AirQualityStationModel.php',
 
 	// Modules
-	'AirQuality\ModuleAirQualityWidget' => 'system/modules/airquality/modules/ModuleAirQualityWidget.php',
 	'AirQuality\ModuleAirQualityFull'   => 'system/modules/airquality/modules/ModuleAirQualityFull.php',
+	'AirQuality\ModuleAirQualityWidget' => 'system/modules/airquality/modules/ModuleAirQualityWidget.php',
+	'AirQuality\ModuleAirQuality'       => 'system/modules/airquality/modules/ModuleAirQuality.php',
 ));
 
 
@@ -44,9 +43,7 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
+	'charts_bar'            => 'system/modules/airquality/templates/charts',
 	'mod_airquality_full'   => 'system/modules/airquality/templates/modules',
 	'mod_airquality_widget' => 'system/modules/airquality/templates/modules',
-	'mod_airquality_empty'  => 'system/modules/airquality/templates/modules',
-	'chartempty'            => 'system/modules/airquality/templates/charts',
-	'charts_bar'            => 'system/modules/airquality/templates/charts',
 ));
