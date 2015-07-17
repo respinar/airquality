@@ -16,8 +16,8 @@
  * Fields
  */
 $GLOBALS['TL_LANG']['tl_airquality_data']['date'] = array('Date', 'Please enter the date.');
-$GLOBALS['TL_LANG']['tl_airquality_data']['PM25'] = array('PM 2.5 Particles', 'Particulate matter 2.5 μg/m<sup>3</sup> (0 - 500)');
-$GLOBALS['TL_LANG']['tl_airquality_data']['PM10'] = array('PM 10 Particles', 'Particulate matter 10 μg/m<sup>3</sup> (0 - 600)');
+$GLOBALS['TL_LANG']['tl_airquality_data']['PM25'] = array('PM 2.5 &mu;m Particles', 'Particulate matter 2.5 μg/m<sup>3</sup> (0 - 500)');
+$GLOBALS['TL_LANG']['tl_airquality_data']['PM10'] = array('PM 10 &mu;m Particles', 'Particulate matter 10 μg/m<sup>3</sup> (0 - 600)');
 $GLOBALS['TL_LANG']['tl_airquality_data']['CO']   = array('CO (ppm)', 'Carbon Monoxide (0.0 -50)');
 $GLOBALS['TL_LANG']['tl_airquality_data']['PB']   = array('Pb (ppm)', 'Lead');
 $GLOBALS['TL_LANG']['tl_airquality_data']['NO2']  = array('NO<sub>2</sub> (ppm)', 'Nitrogen Dioxide, Hourly mean (0.0 - 2.0)');

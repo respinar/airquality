@@ -21,4 +21,6 @@ $GLOBALS['TL_LANG']['MOD']['airquality'] = array('Air Quality', '');
 /**
  * Front end modules
  */
-$GLOBALS['TL_LANG']['FMD'][''] = array('', '');
+$GLOBALS['TL_LANG']['FMD']['airquality']            = 'Air Quality';
+$GLOBALS['TL_LANG']['FMD']['mod_airquality_widget'] = array('Air Quality widget', '');
+$GLOBALS['TL_LANG']['FMD']['mod_airquality_full']   = array('Air Quality full', '');

@@ -115,7 +115,7 @@ $GLOBALS['TL_DCA']['tl_airquality_data'] = array
 			'flag'                    => 8,
 			'inputType'               => 'text',
 			'eval'                    => array('mandatory'=>true,'rgxp'=>'date', 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
-			'sql'                     => "varchar(10) NOT NULL default '0'"
+			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
 		'PM25' => array
 		(
@@ -218,7 +218,7 @@ class tl_airquality_data extends Backend
 			$aqitext = $aqitext . ' <span class="aqi '.$max.$aqiv[level].'">'.$aqiv[parameter].' ('.$aqiv[value].')</span>';
 		}
 
-		return '<div>'.Date::parse('Y/m/d',$arrRow['date']).' '. $aqitext.'</div>';
+		return '<div><span style="color:#b3b3b3;padding-right:3px">[' . Date::parse(Config::get('dateFormat'), $arrRow['date']) . ']</span> '. $aqitext.'</div>';
 	}
 
 

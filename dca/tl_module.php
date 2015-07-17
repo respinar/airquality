@@ -15,7 +15,6 @@
  * Add palettes to tl_module
  */
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mod_airquality_widget'] = '{title_legend},name,type,headline;
-                                                                        {redirect_legend},jumpTo;
                                                                         {airquality_legend},airquality_city;
                                                                         {parameters_legend},airquality_parameters;
                                                                         {chart_legend:hide},chartTemplate,chartSize;
@@ -23,7 +22,6 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['mod_airquality_widget'] = '{title_l
                                                                         {expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mod_airquality_full']   = '{title_legend},name,type,headline;
                                                                         {parameters_legend},airquality_parameters;
-                                                                        {items_legend:hide},numberOfItems,skipFirst;
                                                                         {chart_legend:hide},chartTemplate,chartSize;
                                                                         {protected_legend:hide},protected;
                                                                         {expert_legend:hide},guests,cssID,space';
@@ -64,8 +62,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['airquality_parameters'] = array
 									'CO'    => &$GLOBALS['TL_LANG']['tl_module']['co'],
 									'NO2'   => &$GLOBALS['TL_LANG']['tl_module']['no2'],
 									'SO2'   => &$GLOBALS['TL_LANG']['tl_module']['so2'],
-									'O31'   => &$GLOBALS['TL_LANG']['tl_module']['o31'],
-									'O38'   => &$GLOBALS['TL_LANG']['tl_module']['o38']
+									'O3'    => &$GLOBALS['TL_LANG']['tl_module']['o3'],
 								),
 	'eval'				   => array('multiple'=>true, 'mandatory'=>true),
 	'sql'				   => "blob NULL",
@@ -73,7 +70,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['airquality_parameters'] = array
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['chartSize'] = array
 (
-	'label'                => &$GLOBALS['TL_LANG']['tl_module']['graphSize'],
+	'label'                => &$GLOBALS['TL_LANG']['tl_module']['chartSize'],
 	'exclude'              => true,
 	'inputType'            => 'imageSize',
 	'options'              => array('px', '%', 'em', 'rem', 'ex', 'pt', 'pc', 'in', 'cm', 'mm'),

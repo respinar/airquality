@@ -1,9 +1,9 @@
 {
-    "name": "respinar/airquality",
+    "name": "respinar/contao-airquality",
     "description": "Air Quality module for Contao",
     "keywords": ["contao", "air quality"],
     "type": "contao-module",
-    "homepage": "https://github.com/respinar/airquality",
+    "homepage": "https://github.com/respinar/contao-airquality",
     "license": "LGPL-3.0+",
     "authors": [
         {
@@ -14,7 +14,7 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/respinar/airquality/issues"
+        "issues": "https://github.com/respinar/contao-airquality/issues"
     },
     "require": {
         "php": ">=5.3.2",
