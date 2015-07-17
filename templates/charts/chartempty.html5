@@ -1,3 +1,0 @@
-<div class="station">ایستگاه <?php echo $this->title; ?></div>
-
-<p>اطلاعاتی برای این ایستگاه وجود ندارد.</p>
