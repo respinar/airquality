@@ -25,7 +25,7 @@ namespace AirQuality;
  * @author     Hamid Abbaszadeh
  * @package    AirQuality
  */
-class ModuleAirQualityWidget extends \Module
+class ModuleAirQualityWidget extends \ModuleAirQuality
 {
 
 	/**
@@ -51,6 +51,12 @@ class ModuleAirQualityWidget extends \Module
 			$objTemplate->href = 'contao/main.php?do=themes&amp;table=tl_module&amp;act=edit&amp;id=' . $this->id;
 
 			return $objTemplate->parse();
+		}	
+
+		// Return if there are no city
+		if (empty($this->airquality_city))
+		{
+			return '';
 		}
 
 		if (TL_MODE == 'FE')

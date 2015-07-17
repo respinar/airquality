@@ -19,13 +19,13 @@ namespace AirQuality;
 
 
 /**
- * Class ModuleAirQualityCharts
+ * Class ModuleAirQualityFull
  *
  * @copyright  2015
  * @author     Hamid Abbaszadeh
- * @package    Devtools
+ * @package    AirQuality
  */
-class ModuleAirQualityFull extends \Module
+class ModuleAirQualityFull extends \ModuleAirQuality
 {
 
 	/**
