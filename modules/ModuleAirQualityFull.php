@@ -69,7 +69,7 @@ class ModuleAirQualityFull extends \ModuleAirQuality
 		if (TL_MODE == 'FE')
 		{
             $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/airquality/assets/js/Chart.min.js|static';
-            $GLOBALS['TL_CSS'][]        = 'system/modules/airquality/assets/css/style.css';
+            $GLOBALS['TL_CSS'][]        = 'system/modules/airquality/assets/styles/style.css';
         }
 
 		return parent::generate();
