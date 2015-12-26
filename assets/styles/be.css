@@ -1,0 +1,23 @@
+.aqi {
+	display:inline-block;
+	width: 80px;
+	padding: 1px 5px;
+}
+
+.max {
+	font-weight:bold;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB94DDAkKM6N4oIQAAADJSURBVCjPpZIxjoQwDEWfFiHkYqkCNQ2i5YScxWkYTpFb+DjB24RVNEuxYr4UKbL+i+z4w43Gcby932qe5wbogG+gCSEQQgBoSq0rnj9QH2PczOwFTEBbzmRmrxjjBvTvcBdj3LwopXSIyCIiS0rpcHc/z/MscFeDvZn9GtzdVXVX1b2umdkB9ACs63rNMV2vu7vnnD3n7HUXZYSmMDAMA0ArIouq7jWQc3ZV3UVkAdri5Yun+qjVR59Tr+My/HsdnwTgWeSehPwHxvjth5PORHIAAAAASUVORK5CYII=);
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding: 0px 4px;
+	border: 1px solid black;
+	-webkit-box-shadow: 0px 0px 2px 0px #000000;
+	box-shadow: 0px 0px 1px 0px #000000;
+}
+
+.good          { background-color: green;	color: white;}
+.moderate      { background-color: yellow;	color: black;}
+.unhealthysg   { background-color: orange;	color: black;}
+.unhealthy     { background-color: red;	    color: white;}
+.veryunhealthy { background-color: purple;	color: white;}
+.hazardous     { background-color: maroon;	color: white;}
