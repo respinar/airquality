@@ -15,6 +15,9 @@
 /**
  * Miscellaneous
  */
+ 
+$GLOBALS['TL_LANG']['MSC']['emptyAirQuality'] = "There is no date!"; 
+ 
 $GLOBALS['TL_LANG']['MSC']['PM25']['name'] = 'Particulate Matter 2.5 µm';
 $GLOBALS['TL_LANG']['MSC']['PM10']['name'] = 'Particulate Matter 10 µm';
 $GLOBALS['TL_LANG']['MSC']['NO2']['name']  = 'Nitrogen dioxide';
