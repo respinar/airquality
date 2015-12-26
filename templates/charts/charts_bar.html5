@@ -1,26 +1,25 @@
 <div class="station">ایستگاه <?php echo $this->title; ?></div>
 
-    <div class="container vertical flat">
-        <?php foreach($this->data[aqi] as $aqi): ?>
-            <div class="progress-bar">
-                <div class="progress-track">
-                    <div class="progress-fill <?= $aqi[level] ?>">
-                        <span><?= $aqi[value] ?></span>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach; ?>        
-    </div>
-    <div class="bar_legend">
-        <div class="pm">pm2</div>
-        <div class="pm">pm10</div>
-        <div class="pm">CO</div>
-        <div class="pm">NO2</div>
-        <div class="pm">SO2</div>
-        <div class="pm">O3</div>
-    </div>
-    
+<div class="container vertical flat">
+	<?php foreach($this->data[aqi] as $aqi): ?>
+		<div class="progress-bar">
+			<div class="progress-track">
+				<div class="progress-fill <?= $aqi[level] ?>">
+					<span><?= $aqi[value] ?></span>
+				</div>
+			</div>
+		</div>
+	<?php endforeach; ?>        
 </div>
+<div class="bar_legend">
+	<div class="pm">pm2</div>
+	<div class="pm">pm10</div>
+	<div class="pm">CO</div>
+	<div class="pm">NO2</div>
+	<div class="pm">SO2</div>
+	<div class="pm">O3</div>
+</div>
+
 
 <script>
     $('.vertical .progress-fill span').each(function(){
