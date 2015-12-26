@@ -23,7 +23,7 @@ $GLOBALS['TL_DCA']['tl_airquality_data'] = array
 	(
 
 		'dataContainer'			=> 'Table',
-		'ptable'				=> 'tl_airquality_station',
+		'ptable'			=> 'tl_airquality_station',
 		'enableVersioning'		=> true,
 		'onsubmit_callback' => array
 		(
