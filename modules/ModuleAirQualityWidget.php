@@ -56,13 +56,14 @@ class ModuleAirQualityWidget extends \ModuleAirQuality
 		// Return if there are no city
 		if (empty($this->airquality_city))
 		{
-			return '';
+			return;
 		}
 
 		if (TL_MODE == 'FE')
 		{
-            $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/airquality/assets/js/Chart.min.js|static';
-            $GLOBALS['TL_CSS'][]        = 'system/modules/airquality/assets/css/style.css';
+            $GLOBALS['TL_CSS'][]        = 'system/modules/airquality/assets/styles/style.css|static';
+            $GLOBALS['TL_CSS'][]        = 'system/modules/airquality/assets/styles/style-bar.css|static';
+            
         }
 
 		return parent::generate();
@@ -74,6 +75,8 @@ class ModuleAirQualityWidget extends \ModuleAirQuality
 	 */
 	protected function compile()
 	{
+        
+        $this->Template->emptyAirQuality = $GLOBALS['TL_LANG']['MSC']['emptyAirQuality'];
 
 		// Generate a jumpTo link
 		if ($this->jumpTo > 0)
@@ -100,62 +103,54 @@ class ModuleAirQualityWidget extends \ModuleAirQuality
 
 		// No stations found
 		if ($objAirQualityStaions === null)
-		{
-			$this->Template = new \FrontendTemplate('mod_airquality_empty');
-			$this->Template->empty = $GLOBALS['TL_LANG']['MSC']['emptyAirQuality'];
-		} else {
+		{			
+            retuen;
+		} 
 
-			$arrAirQuality = array();
-			$arrCityMaxAQI = array(parameter=>'',value=>0,color=>'',level=>'');
+        $arrAirQuality = array();
+        $arrCityMaxAQI = array(parameter=>'',value=>0,color=>'',level=>'');
 
-			foreach($objAirQualityStaions as $objStation)
-			{
-				$objAirQualityData = \AirQualityDataModel::findByPidAndToday($objStation->id);
+        foreach($objAirQualityStaions as $objStation)
+        {
+            $objAirQualityData = \AirQualityDataModel::findByPidAndToday($objStation->id);
 
-				if ($objAirQualityData !== null)
-				{
+            if ($objAirQualityData !== null)
+            {
 
-					$aqis   = deserialize($objAirQualityData->AQI_ALL);
-					$maxaqi = deserialize($objAirQualityData->AQI_MAX);
+                $aqis   = deserialize($objAirQualityData->AQI_ALL);
+                $maxaqi = deserialize($objAirQualityData->AQI_MAX);
 
-					$arrAirQuality = array
-										(
-											'station' => $objStation->title,
-											'date'    => \Date::parse('l j F',$objAirQualityData->date),
-											'aqi'     => $aqis,
-											'maxaqi'  => $maxaqi
-										);
+                $arrAirQuality = array
+                                    (
+                                        'station' => $objStation->title,
+                                        'date'    => \Date::parse('l j F',$objAirQualityData->date),
+                                        'aqi'     => $aqis,
+                                        'maxaqi'  => $maxaqi
+                                    );
 
-					$objTemplate = new \FrontendTemplate($this->chartTemplate);
+                $objTemplate = new \FrontendTemplate($this->chartTemplate);
 
-					$size = deserialize($this->chartSize);
-					$objTemplate->width  = $size[0];
-					$objTemplate->height = $size[1];
-					$objTemplate->title = $objStation->title;
-					$objTemplate->alias = $objStation->alias;
-					$objTemplate->id = uniqid('chart_');
+                $size = deserialize($this->chartSize);
+                $objTemplate->width  = $size[0];
+                $objTemplate->height = $size[1];
+                $objTemplate->title = $objStation->title;
+                $objTemplate->alias = $objStation->alias;
+                $objTemplate->id = uniqid('chart_');
 
-					$objTemplate->labels = '"PM2.5","PM10","CO","NO2","SO2","O3"';
-					$objTemplate->data = $arrAirQuality;
+                $objTemplate->labels = '"PM2.5","PM10","CO","NO2","SO2","O3"';
+                $objTemplate->data = $arrAirQuality;
 
-					$arrAirQualityCharts[] = $objTemplate->parse();
+                $arrAirQualityCharts[] = $objTemplate->parse();
 
-					if ($arrCityMaxAQI[value] < $maxaqi[value])
-					{
-						$arrCityMaxAQI = $maxaqi;
-					}
-				}
-			}
+                if ($arrCityMaxAQI[value] < $maxaqi[value])
+                {
+                    $arrCityMaxAQI = $maxaqi;
+                }
+            }
+			
 
-			$this->Template->citymaxaqi = $arrCityMaxAQI;
-
-			if ($arrAirQualityCharts)
-			{
-				$this->Template->airqualitycharts = $arrAirQualityCharts;
-			} else {
-				$this->Template = new \FrontendTemplate('mod_airquality_empty');
-				$this->Template->empty = $GLOBALS['TL_LANG']['MSC']['emptyAirQuality'];
-			}
+			$this->Template->citymaxaqi = $arrCityMaxAQI;			
+			$this->Template->airqualitycharts = $arrAirQualityCharts;			
 
 		}
 
