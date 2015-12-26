@@ -43,7 +43,8 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'charts_bar'            => 'system/modules/airquality/templates/charts',
+    'charts_bar'            => 'system/modules/airquality/templates/charts',
+	'charts_chart'          => 'system/modules/airquality/templates/charts',
 	'mod_airquality_full'   => 'system/modules/airquality/templates/modules',
 	'mod_airquality_widget' => 'system/modules/airquality/templates/modules',
 ));
