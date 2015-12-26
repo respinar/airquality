@@ -1,21 +1,23 @@
 
-<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+<div class="<?= $this->class; ?> block"<?= $this->cssID; ?><?php if ($this->style): ?> style="<?= $this->style; ?>"<?php endif; ?>>
 
   <?php if ($this->headline): ?>
-    <<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+    <<?= $this->hl; ?>><?= $this->headline; ?></<?= $this->hl; ?>>
   <?php endif; ?>
+  
+  <?php if(!$this->airqualitycharts): ?>
+        <div class="empyt"><?= $this->emptyAirQuality ?></div>
+  <?php else: ?>
 
-  <p class="city">کیفیت هوای <?php echo $this->city; ?></p>
-  <p class="date">امروز <?php echo $this->date; ?></p>
-  <p class="level">کیفیت هوا <?php echo $GLOBALS['TL_LANG']['MSC']['level'][$this->citymaxaqi[level]]; ?> است.</p>
+  <p class="city">کیفیت هوای <?= $this->city; ?></p>
+  <p class="date">امروز <?= $this->date; ?></p>
+  <p class="level">کیفیت هوا <?= $GLOBALS['TL_LANG']['MSC']['level'][$this->citymaxaqi[level]]; ?> است.</p>
 
-  <div class="maxaqi <?php echo $this->citymaxaqi[level]; ?>"><?php echo $this->citymaxaqi[value]; ?></div>
-
+  <div class="maxaqi <?= $this->citymaxaqi[level]; ?>"><?= $this->citymaxaqi[value]; ?></div>
 
   <?php foreach($this->airqualitycharts as $chart) echo $chart; ?>
-
-  <a href="<?php echo $this->link; ?>">مشاهده گزارش کامل</a>
-  <div class="source">منبع: <?php echo $this->source; ?></div>
+  
+  <div class="source">منبع: <?= $this->source; ?></div>
 
   <div class="legend">
 	<h5>راهنمای رنگ‌های شاخص کیفیت</h5>
@@ -26,6 +28,8 @@
 	<p class="veryunhealthy">خیلی ناسالم</p>
 	<p class="hazardous">خطرناک</p>
   </div>
+  
+  <?php endif; ?>
 
 </div>
 
