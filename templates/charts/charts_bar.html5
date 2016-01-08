@@ -1,5 +1,3 @@
-<div class="station">ایستگاه <?php echo $this->title; ?></div>
-
 <div class="container vertical flat">
 	<?php foreach($this->data[aqi] as $aqi): ?>
 		<div class="progress-bar">
@@ -19,6 +17,7 @@
 	<div class="pm">SO2</div>
 	<div class="pm">O3</div>
 </div>
+<div class="station">ایستگاه: <?php echo $this->title; ?></div>
 
 
 <script>
