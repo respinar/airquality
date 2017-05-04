@@ -3,7 +3,7 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2015 Leo Feyer
+ * Copyright (c) 2005-2017 Leo Feyer
  *
  * @license LGPL-3.0+
  */
@@ -14,7 +14,7 @@
  */
 ClassLoader::addNamespaces(array
 (
-	'AirQuality',
+	'Respinar\AirQuality',
 ));
 
 
@@ -23,18 +23,14 @@ ClassLoader::addNamespaces(array
  */
 ClassLoader::addClasses(array
 (
-	// Classes
-	'AirQuality\AirQuality'             => 'system/modules/airquality/classes/AirQuality.php',
-
-	// Models
-	'AirQuality\AirQualityCityModel'    => 'system/modules/airquality/models/AirQualityCityModel.php',
-	'AirQuality\AirQualityDataModel'    => 'system/modules/airquality/models/AirQualityDataModel.php',
-	'AirQuality\AirQualityStationModel' => 'system/modules/airquality/models/AirQualityStationModel.php',
-
-	// Modules
-	'AirQuality\ModuleAirQualityFull'   => 'system/modules/airquality/modules/ModuleAirQualityFull.php',
-	'AirQuality\ModuleAirQualityWidget' => 'system/modules/airquality/modules/ModuleAirQualityWidget.php',
-	'AirQuality\ModuleAirQuality'       => 'system/modules/airquality/modules/ModuleAirQuality.php',
+	// Library
+	'Respinar\AirQuality\AirQuality'             => 'system/modules/airquality/library/Respinar/AirQuality/AirQuality.php',
+	'Respinar\AirQuality\AirQualityStationModel' => 'system/modules/airquality/library/Respinar/AirQuality/Models/AirQualityStationModel.php',
+	'Respinar\AirQuality\AirQualityDataModel'    => 'system/modules/airquality/library/Respinar/AirQuality/Models/AirQualityDataModel.php',
+	'Respinar\AirQuality\AirQualityCityModel'    => 'system/modules/airquality/library/Respinar/AirQuality/Models/AirQualityCityModel.php',
+	'Respinar\AirQuality\ModuleAirQualityWidget' => 'system/modules/airquality/library/Respinar/AirQuality/Frontend/Modules/ModuleAirQualityWidget.php',
+	'Respinar\AirQuality\ModuleAirQualityChart'  => 'system/modules/airquality/library/Respinar/AirQuality/Frontend/Modules/ModuleAirQualityChart.php',
+	'Respinar\AirQuality\ModuleAirQuality'       => 'system/modules/airquality/library/Respinar/AirQuality/Frontend/ModuleAirQuality.php',
 ));
 
 
@@ -43,8 +39,8 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-    'charts_bar'            => 'system/modules/airquality/templates/charts',
-	'charts_chart'          => 'system/modules/airquality/templates/charts',
-	'mod_airquality_full'   => 'system/modules/airquality/templates/modules',
 	'mod_airquality_widget' => 'system/modules/airquality/templates/modules',
+	'mod_airquality_chart'  => 'system/modules/airquality/templates/modules',
+	'airquality_chart'      => 'system/modules/airquality/templates/airquality',
+	'airquality_bar'        => 'system/modules/airquality/templates/airquality',
 ));
