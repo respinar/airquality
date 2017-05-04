@@ -16,13 +16,12 @@
  */
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mod_airquality_widget'] = '{title_legend},name,type,headline;
                                                                         {airquality_legend},airquality_city;
-                                                                        {parameters_legend},airquality_parameters;
-                                                                        {chart_legend:hide},chartTemplate,chartSize;
+                                                                        {chart_legend:hide},airquality_template,airquality_chartSize;
                                                                         {protected_legend:hide},protected;
                                                                         {expert_legend:hide},guests,cssID,space';
-$GLOBALS['TL_DCA']['tl_module']['palettes']['mod_airquality_full']   = '{title_legend},name,type,headline;
-                                                                        {parameters_legend},airquality_parameters;
-                                                                        {chart_legend:hide},chartTemplate,chartSize;
+$GLOBALS['TL_DCA']['tl_module']['palettes']['mod_airquality_chart']  = '{title_legend},name,type,headline;
+                                                                        {airquality_legend},;
+                                                                        {chart_legend:hide},airquality_template,airquality_chartSize;
                                                                         {protected_legend:hide},protected;
                                                                         {expert_legend:hide},guests,cssID,space';
 
@@ -36,13 +35,13 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['airquality_city'] = array
 	'exclude'              => true,
 	'inputType'            => 'radio',
 	'foreignKey'           => 'tl_airquality_city.title',
-	'eval'                 => array('multiple'=>true, 'mandatory'=>true),
+	'eval'                 => array('multiple'=>false, 'mandatory'=>true),
 	'sql'				   => "int(10) unsigned NOT NULL default '0'",
 );
 
-$GLOBALS['TL_DCA']['tl_module']['fields']['chartTemplate'] = array
+$GLOBALS['TL_DCA']['tl_module']['fields']['airquality_template'] = array
 (
-	'label'                => &$GLOBALS['TL_LANG']['tl_module']['chartTemplate'],
+	'label'                => &$GLOBALS['TL_LANG']['tl_module']['airquality_template'],
 	'exclude'              => true,
 	'inputType'            => 'select',
 	'options_callback'     => array('tl_airquality_template', 'getChartTemplates'),
@@ -68,9 +67,9 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['airquality_parameters'] = array
 	'sql'				   => "blob NULL",
 );
 
-$GLOBALS['TL_DCA']['tl_module']['fields']['chartSize'] = array
+$GLOBALS['TL_DCA']['tl_module']['fields']['airquality_chartSize'] = array
 (
-	'label'                => &$GLOBALS['TL_LANG']['tl_module']['chartSize'],
+	'label'                => &$GLOBALS['TL_LANG']['tl_module']['airquality_chartSize'],
 	'exclude'              => true,
 	'inputType'            => 'imageSize',
 	'options'              => array('px', '%', 'em', 'rem', 'ex', 'pt', 'pc', 'in', 'cm', 'mm'),
@@ -80,7 +79,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['chartSize'] = array
 
 
 /**
- * Class tl_links
+ * Class tl_airquality_template
  *
  * Provide miscellaneous methods that are used by the data configuration array.
  * @copyright  Hamid Abbaszadeh 2015
@@ -91,12 +90,12 @@ class tl_airquality_template extends Backend
 {
 
 	/**
-	 * Return all charts templates as array
-	 * @param object
+	 * Return all news templates as array
+	 *
 	 * @return array
 	 */
-	public function getChartTemplates(DataContainer $dc)
+	public function getChartTemplates()
 	{
-		return $this->getTemplateGroup('charts_', $dc->activeRecord->pid);
+		return $this->getTemplateGroup('airquality_');
 	}
 }
