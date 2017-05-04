@@ -15,7 +15,7 @@
 /**
  * Namespace
  */
-namespace AirQuality;
+namespace Respinar\AirQuality;
 
 /**
  * Class AirqualityDataModel

@@ -15,23 +15,23 @@
 /**
  * Namespace
  */
-namespace AirQuality;
+namespace Respinar\AirQuality;
 
 /**
- * Class AirqualityStationModel
+ * Class AirqualityCityModel
  *
  * @copyright  2015
  * @author     Hamid Abbaszadeh
  * @package    Devtools
  */
-class AirQualityStationModel extends \Model
+class AirQualityCityModel extends \Model
 {
 
 	/**
 	 * Name of the table
 	 * @var string
 	 */
-	protected static $strTable = 'tl_airquality_station';
+	protected static $strTable = 'tl_airquality_city';
 
 	/**
 	 * Find Air Pollution by its ID
@@ -40,13 +40,29 @@ class AirQualityStationModel extends \Model
 	 *
 	 * @return \Model\Collection|null A collection of models or null if there are no news
 	 */
-	public static function findByPid($intId)
+	public static function findById($intId)
 	{
 		$t = static::$strTable;
 
-		$arrColumns = array("$t.pid=?");
+		$arrColumns = array("$t.id=?");
 
 		return static::findBy($arrColumns, $intId);
+	}
+
+	/**
+	 * Find Air Pollution by its Alias
+	 *
+	 * @param integer $intId      The air pollution category Alias
+	 *
+	 * @return \Model\Collection|null A collection of models or null if there are no news
+	 */
+	public static function findByAlias($Alias)
+	{
+		$t = static::$strTable;
+
+		$arrColumns = array("$t.alias=?");
+
+		return static::findBy($arrColumns, $Alias);
 	}
 
 }
