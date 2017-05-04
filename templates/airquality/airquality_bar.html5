@@ -1,0 +1,37 @@
+<div class="container vertical flat">
+
+	<?php foreach($this->AirQualityIndex as $AirQualityIndex): ?>
+	<div class="progress-bar">
+		<div class="progress-track">
+			<div class="progress-fill <?= $AirQualityIndex[1] ?>">
+				<span><?= $AirQualityIndex[0] ?></span>
+			</div>
+		</div>
+	</div>
+	<?php endforeach; ?> 
+
+</div>
+
+<div class="bar_legend">
+	<div class="PM25">PM<sub>2.5</sub></div>
+	<div class="PM10">PM<sub>10</sub></div>
+	<div class="CO">CO</div>
+	<div class="NO2">NO<sub>2</sub></div>
+	<div class="SO2">SO<sub>2</sub></div>
+	<div class="O3">O<sub>3</sub></div>
+</div>
+
+<div class="station">ایستگاه: <?= $this->title; ?></div>
+
+
+<script>
+    $('.vertical .progress-fill span').each(function(){
+        var aqi = $(this).html();var percent = Math.round(aqi/3)+18;
+        if (percent > 100) {percent=100;};
+        var pTop = 100 - percent + "%";
+        $(this).parent().css({
+            'height' : percent,
+            'top' : pTop
+        });
+    });
+</script>
