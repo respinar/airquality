@@ -15,7 +15,7 @@
 	text-align:center;
 }
 
-.maxaqi {
+.aqi {
 	width: 100%;
 	height: 50px;
 	-webkit-border-radius: 5px;
@@ -43,6 +43,7 @@
 }
 
 
+.none          { background-color: white;	color: black;}
 .good          { background-color: green;	color: white;}
 .moderate      { background-color: yellow;	color: black;}
 .unhealthysg   { background-color: orange;	color: black;}

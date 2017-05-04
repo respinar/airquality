@@ -1,0 +1,22 @@
+.aqi {
+	display:inline-block;
+	width: 75px;
+	padding: 1px;
+	border: 1px solid black;	
+}
+
+.max {
+	font-weight:bold;	
+	padding: 0px 4px;	
+	text-align: center;
+	width: 80px;
+	margin-right: 40px;
+}
+
+.none          { background-color: white;	color: black;}
+.good          { background-color: green;	color: white;}
+.moderate      { background-color: yellow;	color: black;}
+.unhealthysg   { background-color: orange;	color: black;}
+.unhealthy     { background-color: red;	    color: white;}
+.veryunhealthy { background-color: purple;	color: white;}
+.hazardous     { background-color: maroon;	color: white;}
