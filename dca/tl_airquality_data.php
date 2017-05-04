@@ -124,7 +124,7 @@ $GLOBALS['TL_DCA']['tl_airquality_data'] = array
 			'inputType'               => 'text',
 			'search'                  => false,
 			'eval'                    => array('mandatory'=>true, 'maxlength'=>6, 'rgxp'=>'digit', 'tl_class'=>'w50'),
-			'sql'					            => "varchar(10) NOT NULL default '0'"
+			'sql'					  => "varchar(10) NOT NULL default '0'"
 		),
 		'PM10' => array
 		(
@@ -133,7 +133,7 @@ $GLOBALS['TL_DCA']['tl_airquality_data'] = array
 			'inputType'               => 'text',
 			'search'                  => false,
 			'eval'                    => array('mandatory'=>true, 'maxlength'=>6, 'rgxp'=>'digit', 'tl_class'=>'w50'),
-			'sql'					            => "varchar(10) NOT NULL default '0'"
+			'sql'					  => "varchar(10) NOT NULL default '0'"
 		),
 		'CO' => array
 		(
@@ -142,7 +142,7 @@ $GLOBALS['TL_DCA']['tl_airquality_data'] = array
 			'exclude'                 => true,
 			'search'                  => false,
 			'eval'                    => array('mandatory'=>false, 'maxlength'=>6, 'rgxp'=>'digit', 'tl_class'=>'w50'),
-			'sql'					            => "varchar(10) NOT NULL default '0'"
+			'sql'					  => "varchar(10) NOT NULL default '0'"
 		),
 		'PB' => array
 		(
@@ -151,7 +151,7 @@ $GLOBALS['TL_DCA']['tl_airquality_data'] = array
 			'inputType'               => 'text',
 			'search'                  => false,
 			'eval'                    => array('mandatory'=>false, 'maxlength'=>6, 'rgxp'=>'digit', 'tl_class'=>'w50'),
-			'sql'			          		  => "varchar(10) NOT NULL default '0'"
+			'sql'			          => "varchar(10) NOT NULL default '0'"
 		),
 		'NO2' => array
 		(
@@ -160,7 +160,7 @@ $GLOBALS['TL_DCA']['tl_airquality_data'] = array
 			'inputType'               => 'text',
 			'search'                  => false,
 			'eval'                    => array('mandatory'=>false, 'maxlength'=>6, 'rgxp'=>'digit', 'tl_class'=>'w50'),
-			'sql'					            => "varchar(10) NOT NULL default '0'"
+			'sql'					  => "varchar(10) NOT NULL default '0'"
 		),
 		'O3' => array
 		(
@@ -169,7 +169,7 @@ $GLOBALS['TL_DCA']['tl_airquality_data'] = array
 			'inputType'               => 'text',
 			'search'                  => false,
 			'eval'                    => array('multiple'=>true,'size'=>2, 'tl_class'=>'w50'),
-			'sql'					            => "varchar(255) NOT NULL default '0'"
+			'sql'					  => "varchar(255) NOT NULL default 'a:2:{i:0;s:1:\"0\";i:1;s:1:\"0\";}'"
 		),
 		'SO2' => array
 		(
@@ -178,15 +178,35 @@ $GLOBALS['TL_DCA']['tl_airquality_data'] = array
 			'exclude'                 => true,
 			'search'                  => false,
 			'eval'                    => array('mandatory'=>false, 'maxlength'=>6, 'rgxp'=>'digit', 'tl_class'=>'w50'),
-			'sql'					            => "varchar(10) NOT NULL default '0'"
+			'sql'					  => "varchar(10) NOT NULL default '0'"
 		),
-		'AQI_MAX' => array
+		'AQI_PM25' => array
 		(
-			'sql'		                  => "varchar(255) NOT NULL default ''"
+			'sql'		                  => "varchar(10) NOT NULL default ''"
 		),
-		'AQI_ALL' => array
+		'AQI_PM10' => array
 		(
-			'sql'		                  => "blob NULL"
+			'sql'		                  => "varchar(10) NOT NULL default ''"
+		),
+		'AQI_CO' => array
+		(
+			'sql'		                  => "varchar(10) NOT NULL default ''"
+		),
+		'AQI_SO2' => array
+		(
+			'sql'		                  => "varchar(10) NOT NULL default ''"
+		),
+		'AQI_NO2' => array
+		(
+			'sql'		                  => "varchar(10) NOT NULL default ''"
+		),
+		'AQI_O3' => array
+		(
+			'sql'		                  => "varchar(10) NOT NULL default ''"
+		),
+		'AQI' => array
+		(
+			'sql'		                  => "varchar(10) NOT NULL default ''"
 		)
 	)
 );
@@ -203,20 +223,16 @@ class tl_airquality_data extends Backend
 	 * @return string
 	 */
 	public function generateRow($arrRow)
-	{
+	{		
 
-		//$aqi = new \AirQuality($arrRow);
+		$aqitext = '<span class="aqi max '.AirQuality::aqi_level($arrRow[AQI]).'">AQI '.$arrRow[AQI].'</span>';
 
-		$aqitext = '';
-
-		$AirQualityIndexes = deserialize($arrRow['AQI_ALL']);
-		$AirQualityIndex = deserialize($arrRow['AQI_MAX']);
-
-		foreach ($AirQualityIndexes as $aqiv)
-		{
-			if ($AirQualityIndex[parameter] == $aqiv[parameter]) $max = 'max '; else $max = '';
-			$aqitext = $aqitext . ' <span class="aqi '.$max.$aqiv[level].'">'.$aqiv[parameter].' ('.$aqiv[value].')</span>';
-		}
+		$aqitext = $aqitext . ' <span class="aqi '.AirQuality::aqi_level($arrRow[AQI_PM25]).'"> PM2.5 ('.$arrRow[AQI_PM25].')</span>';
+		$aqitext = $aqitext . ' <span class="aqi '.AirQuality::aqi_level($arrRow[AQI_PM10]).'"> PM10 ('.$arrRow[AQI_PM10].')</span>';
+		$aqitext = $aqitext . ' <span class="aqi '.AirQuality::aqi_level($arrRow[AQI_CO]).'"> CO ('.$arrRow[AQI_CO].')</span>';
+		$aqitext = $aqitext . ' <span class="aqi '.AirQuality::aqi_level($arrRow[AQI_NO2]).'"> NO2 ('.$arrRow[AQI_NO2].')</span>';
+		$aqitext = $aqitext . ' <span class="aqi '.AirQuality::aqi_level($arrRow[AQI_SO2]).'"> SO2 ('.$arrRow[AQI_SO2].')</span>';
+		$aqitext = $aqitext . ' <span class="aqi '.AirQuality::aqi_level($arrRow[AQI_O3]).'"> O3 ('.$arrRow[AQI_O3].')</span>';
 
 		return '<div><span style="color:#b3b3b3;padding-right:3px">[' . Date::parse(Config::get('dateFormat'), $arrRow['date']) . ']</span> '. $aqitext.'</div>';
 	}
@@ -236,8 +252,13 @@ class tl_airquality_data extends Backend
 
 		$aqi = new \AirQuality($dc->activeRecord);
 
-		$arrSet['AQI_MAX'] = $aqi->AirQualityIndex;
-		$arrSet['AQI_ALL'] = $aqi->AirQualityIndexes;
+		$arrSet['AQI_PM25'] = $aqi->AQI_PM25;
+		$arrSet['AQI_PM10'] = $aqi->AQI_PM10;
+		$arrSet['AQI_CO']   = $aqi->AQI_CO;
+		$arrSet['AQI_NO2']  = $aqi->AQI_NO2;
+		$arrSet['AQI_SO2']  = $aqi->AQI_SO2;
+		$arrSet['AQI_O3']   = $aqi->AQI_O3;
+		$arrSet['AQI']      = $aqi->AQI;
 
 		$this->Database->prepare("UPDATE tl_airquality_data %s WHERE id=?")->set($arrSet)->execute($dc->id);
 	}
