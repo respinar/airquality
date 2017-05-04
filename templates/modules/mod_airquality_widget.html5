@@ -1,36 +1,38 @@
 
-<div class="<?= $this->class; ?> block"<?= $this->cssID; ?><?php if ($this->style): ?> style="<?= $this->style; ?>"<?php endif; ?>>
+<?php $this->extend('block_unsearchable'); ?>
 
-  <?php if ($this->headline): ?>
-    <<?= $this->hl; ?>><?= $this->headline; ?></<?= $this->hl; ?>>
-  <?php endif; ?>
-  
-  <?php if(!$this->airqualitycharts): ?>
-        <div class="empyt"><?= $this->emptyAirQuality ?></div>
+<?php $this->block('content'); ?>
+
+  <?php if(!$this->airqualitystation): ?>
+
+    <div class="empyt"><?= $this->emptyAirQuality ?></div>
+
   <?php else: ?>
 
-  <p class="city">کیفیت هوای <?= $this->city; ?></p>
-  <p class="date">امروز <?= $this->date; ?></p>
-  <p class="level">کیفیت هوا <?= $GLOBALS['TL_LANG']['MSC']['level'][$this->citymaxaqi[level]]; ?> است.</p>
+    <p class="city"><?= $this->city; ?></p>
+    
+    <p class="date"><?= $this->date; ?></p>
 
-  <div class="maxaqi <?= $this->citymaxaqi[level]; ?>"><?= $this->citymaxaqi[value]; ?></div>
+    <p class="level">کیفیت هوا <?= $GLOBALS['TL_LANG']['MSC']['level'][$this->cityaqi_level]; ?> است.</p>
 
-  <?php foreach($this->airqualitycharts as $chart) echo $chart; ?>
-  
-  <div class="source">منبع: <?= $this->source; ?></div>
+    <div class="aqi <?= $this->cityaqi_level; ?>"><?= $this->cityaqi; ?></div>
 
-  <div class="legend">
-	<h5>راهنمای رنگ‌های شاخص کیفیت</h5>
-	<p class="good">خوب</p>
-	<p class="moderate">متوسط</p>
-	<p class="unhealthysg">ناسالم برای گروه خاص</p>
-	<p class="unhealthy">ناسالم</p>
-	<p class="veryunhealthy">خیلی ناسالم</p>
-	<p class="hazardous">خطرناک</p>
-  </div>
+    <?php foreach($this->airqualitystation as $station) echo $station; ?>
+    
+    <div class="source">منبع: <?= $this->source; ?></div>
+
+    <div class="legend">
+      <h5>راهنمای رنگ‌های شاخص کیفیت</h5>
+      <p class="good">خوب</p>
+      <p class="moderate">متوسط</p>
+      <p class="unhealthysg">ناسالم برای گروه خاص</p>
+      <p class="unhealthy">ناسالم</p>
+      <p class="veryunhealthy">خیلی ناسالم</p>
+      <p class="hazardous">خطرناک</p>
+    </div>
   
   <?php endif; ?>
 
-</div>
+<?php $this->endblock(); ?>
 
 
