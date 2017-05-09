@@ -20,7 +20,7 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['mod_airquality_widget'] = '{title_l
                                                                         {protected_legend:hide},protected;
                                                                         {expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mod_airquality_chart']  = '{title_legend},name,type,headline;
-                                                                        {airquality_legend},;
+                                                                        {airquality_legend},airquality_city;
                                                                         {chart_legend:hide},airquality_template,airquality_chartSize;
                                                                         {protected_legend:hide},protected;
                                                                         {expert_legend:hide},guests,cssID,space';
