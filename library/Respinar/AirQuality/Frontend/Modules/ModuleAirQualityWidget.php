@@ -51,7 +51,7 @@ class ModuleAirQualityWidget extends \Module
 			$objTemplate->href = 'contao/main.php?do=themes&amp;table=tl_module&amp;act=edit&amp;id=' . $this->id;
 
 			return $objTemplate->parse();
-		}			
+		}
 
 		// Return if there are no city
 		if (empty($this->airquality_city))
@@ -61,9 +61,9 @@ class ModuleAirQualityWidget extends \Module
 
 		if (TL_MODE == 'FE')
 		{
-            $GLOBALS['TL_CSS'][]        = 'system/modules/airquality/assets/styles/airquality.css';
-            $GLOBALS['TL_CSS'][]        = 'system/modules/airquality/assets/styles/airquality_bar.css';            
-        }
+			$GLOBALS['TL_CSS'][]        = 'system/modules/airquality/assets/styles/airquality.css';
+			$GLOBALS['TL_CSS'][]        = 'system/modules/airquality/assets/styles/airquality_bar.css';
+		}
 
 		return parent::generate();
 	}
@@ -72,9 +72,9 @@ class ModuleAirQualityWidget extends \Module
 	 * Generate the module
 	 */
 	protected function compile()
-	{        
+	{
 
-        $this->Template->emptyAirQuality = $GLOBALS['TL_LANG']['MSC']['emptyAirQuality'];		
+		$this->Template->emptyAirQuality = $GLOBALS['TL_LANG']['MSC']['emptyAirQuality'];
 
 		$objAirQualityCity = \AirQualityCityModel::findById($this->airquality_city);
 
@@ -84,64 +84,65 @@ class ModuleAirQualityWidget extends \Module
 
 
 		// Generate a jumpTo link
-		if ($this->jumpTo > 0)
+		if ($objAirQualityCity->jumpTo > 0)
 		{
-			$objJump = \PageModel::findByPk($this->jumpTo);
+			$objJump = \PageModel::findByPk($objAirQualityCity->jumpTo);
 
 			if ($objJump !== null)
 			{
-				$strLink = $this->generateFrontendUrl($objJump->row(), ($GLOBALS['TL_CONFIG']['useAutoItem'] ?  '/%s' : '/items/%s'));
+				$strLink = $this->generateFrontendUrl($objJump->row()); //, ($GLOBALS['TL_CONFIG']['useAutoItem'] ?  '/%s' : '/items/%s'));
 			}
 
 			$this->Template->link   = strlen($strLink) ? sprintf($strLink, $objAirQualityCity->alias) : '';
+
+			$this->Template->link  = $strLink;
 		}
 		
 
-		$objAirQualityStaions = \AirQualityStationModel::findByPid($this->airquality_city);        
+		$objAirQualityStaions = \AirQualityStationModel::findByPid($this->airquality_city);
 
 		$CityAQI = 0;
 
-        foreach($objAirQualityStaions as $objStation)
-        {
-            $objAirQualityIndex = \AirQualityDataModel::findByPidAndToday($objStation->id);
+		foreach($objAirQualityStaions as $objStation)
+		{
+			$objAirQualityIndex = \AirQualityDataModel::findByPidAndToday($objStation->id);
 
-            if ($objAirQualityIndex !== null)
-            {
+			if ($objAirQualityIndex !== null)
+			{
 
 				$objTemplate = new \FrontendTemplate($this->airquality_template);
 
-                $aqi_PM25  = $objAirQualityIndex->AQI_PM25;
+				$aqi_PM25  = $objAirQualityIndex->AQI_PM25;
 				$aqi_PM10  = $objAirQualityIndex->AQI_PM10;
 				$aqi_CO    = $objAirQualityIndex->AQI_CO;
 				$aqi_NO2   = $objAirQualityIndex->AQI_NO2;
 				$aqi_SO2   = $objAirQualityIndex->AQI_SO2;
 				$aqi_O3    = $objAirQualityIndex->AQI_O3;
-                $aqi       = $objAirQualityIndex->AQI;
+				$aqi       = $objAirQualityIndex->AQI;
 
-                $arrAirQuality = array
-                                    (
-                                        'aqi_PM25' => array($aqi_PM25,AirQuality::aqi_level($aqi_PM25)),
+				$arrAirQuality = array
+									(
+										'aqi_PM25' => array($aqi_PM25,AirQuality::aqi_level($aqi_PM25)),
 										'aqi_PM10' => array($aqi_PM10,AirQuality::aqi_level($aqi_PM10)),
 										'aqi_CO'   => array($aqi_CO,AirQuality::aqi_level($aqi_CO)),
 										'aqi_NO2'  => array($aqi_NO2,AirQuality::aqi_level($aqi_NO2)),
 										'aqi_SO2'  => array($aqi_SO2,AirQuality::aqi_level($aqi_SO2)),
 										'aqi_O3'   => array($aqi_O3,AirQuality::aqi_level($aqi_O3)),
-                                    );        
+									);
 				$objTemplate->AirQualityIndex = $arrAirQuality;
-				$objTemplate->title = $objStation->title;                         
+				$objTemplate->title = $objStation->title;
 
-                $arrAirQualityStation[] = $objTemplate->parse();
+				$arrAirQualityStation[] = $objTemplate->parse();
 
-                if ($CityAQI < $aqi)
+				if ($CityAQI < $aqi)
 				{
 					$CityAQI = $aqi;
 				}
-            }
-			
+			}
 
 			$this->Template->cityaqi = $CityAQI;
 			$this->Template->cityaqi_level = AirQuality::aqi_level($CityAQI);
-			$this->Template->airqualitystation = $arrAirQualityStation;			
+			$this->Template->airqualitystation = $arrAirQualityStation;
 
 		}
 

@@ -18,7 +18,7 @@
     <div class="aqi <?= $this->cityaqi_level; ?>"><?= $this->cityaqi; ?></div>
 
     <?php foreach($this->airqualitystation as $station) echo $station; ?>
-    
+
     <div class="source">منبع: <?= $this->source; ?></div>
 
     <div class="legend">
@@ -30,7 +30,9 @@
       <p class="veryunhealthy">خیلی ناسالم</p>
       <p class="hazardous">خطرناک</p>
     </div>
-  
+
+    <div><a href="<?= $this->link ?>">نمودار کیفیت هوا</a></div>
+
   <?php endif; ?>
 
 <?php $this->endblock(); ?>

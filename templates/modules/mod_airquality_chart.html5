@@ -1,28 +1,45 @@
 
-<div class="<?= $this->class; ?> block"<?= $this->cssID; ?><?php if ($this->style): ?> style="<?= $this->style; ?>"<?php endif; ?>>
+<?php $this->extend('block_unsearchable'); ?>
 
-  <?php if ($this->headline): ?>
-    <<?= $this->hl; ?>>کیفیت هوای <?= $this->city; ?></<?= $this->hl; ?>>
-  <?php endif; ?>
+<?php $this->block('content'); ?>
 
-  <div class="maxaqi <?= $this->citymaxaqi[level]; ?>"><?= $GLOBALS['TL_LANG']['MSC']['level'][$this->citymaxaqi[level]] .' - '.$this->citymaxaqi[value]; ?></div>
-
-  <p>
-  امروز <?= $this->date; ?> شاخص کیفیت هوا در شهر
-  <?= $this->city; ?> <?= $this->citymaxaqi[value]; ?>
-   و آلاینده مسئول
-    <?= $GLOBALS['TL_LANG']['MSC'][$this->citymaxaqi[parameter]][name]; ?>
-     می‌باشد و کیفیت هوا
-     <?= $GLOBALS['TL_LANG']['MSC']['level'][$this->citymaxaqi[level]]; ?>
-      است و توصیه می‌شود
-     <?= $GLOBALS['TL_LANG']['MSC'][$this->citymaxaqi[parameter]][$this->citymaxaqi[level]]; ?>
-  </p>
-  <p>عوارض بهداشتی:
-      <?= $GLOBALS['TL_LANG']['MSC'][$this->citymaxaqi[parameter]]['healtheffects'][$this->citymaxaqi[level]]; ?>
-  </p>
-
-  <?php foreach($this->airqualitycharts as $chart) echo $chart; ?>
-
-  <div class="source">منبع: <?= $this->source; ?></div>
-
+<div style="width: 100%">
+  <canvas id="canvas"></canvas>
 </div>
+
+<script>
+    var chartData = {
+        labels: [<?php foreach($this->arrCityAQI[0][DATES] as $date) echo "'".$date."',"; endforech; ?>],
+        datasets: [{
+            type: 'bar',            
+            label: '<?= $this->arrCityAQI[0][Station] ?>',
+            backgroundColor: [<?php foreach($this->arrCityAQI[0][COLOR] as $color) echo "'".$color."',"; endforech; ?>],
+            borderWidth: 1,
+            fill: false,
+            data: [<?php foreach($this->arrCityAQI[0][AQI] as $aqi) echo $aqi . ","; endforech; ?>]
+        }]
+
+    };
+    window.onload = function() {
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myMixedChart = new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: '<?= $this->city ?>'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: true
+                }
+            }
+        });
+    };
+
+</script>
+
+<?php $this->endblock(); ?>
+
