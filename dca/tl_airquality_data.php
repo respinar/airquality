@@ -12,6 +12,8 @@
  */
 
 
+use Respinar\AirQuality\AirQuality;
+
 /**
  * Table tl_airquality_data
  */
@@ -250,7 +252,7 @@ class tl_airquality_data extends Backend
 			return;
 		}
 
-		$aqi = new \AirQuality($dc->activeRecord);
+		$aqi = new AirQuality($dc->activeRecord);
 
 		$arrSet['AQI_PM25'] = $aqi->AQI_PM25;
 		$arrSet['AQI_PM10'] = $aqi->AQI_PM10;
