@@ -3,12 +3,12 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2015 Leo Feyer
+ * Copyright (c) 2005-2017 Leo Feyer
  *
  * @package   AirQuality
  * @author    Hamid Abbaszadeh
  * @license   GNU/LGPL
- * @copyright 2015
+ * @copyright 2015-2017
  */
 
 $GLOBALS['TL_LANG']['tl_airquality_data']['CO']['0']      = 'مونو اکسیدکربن (ppm)';
