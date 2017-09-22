@@ -8,31 +8,12 @@
  * @license LGPL-3.0+
  */
 
-
 /**
- * Register the namespaces
+ * Register PSR-0 namespaces
  */
-ClassLoader::addNamespaces(array
-(
-	'Respinar\AirQuality',
-));
-
-
-/**
- * Register the classes
- */
-ClassLoader::addClasses(array
-(
-	// Library
-	'Respinar\AirQuality\AirQuality'             => 'system/modules/airquality/library/Respinar/AirQuality/AirQuality.php',
-	'Respinar\AirQuality\AirQualityStationModel' => 'system/modules/airquality/library/Respinar/AirQuality/Models/AirQualityStationModel.php',
-	'Respinar\AirQuality\AirQualityDataModel'    => 'system/modules/airquality/library/Respinar/AirQuality/Models/AirQualityDataModel.php',
-	'Respinar\AirQuality\AirQualityCityModel'    => 'system/modules/airquality/library/Respinar/AirQuality/Models/AirQualityCityModel.php',
-	'Respinar\AirQuality\ModuleAirQualityWidget' => 'system/modules/airquality/library/Respinar/AirQuality/Frontend/Modules/ModuleAirQualityWidget.php',
-	'Respinar\AirQuality\ModuleAirQualityChart'  => 'system/modules/airquality/library/Respinar/AirQuality/Frontend/Modules/ModuleAirQualityChart.php',
-	'Respinar\AirQuality\ModuleAirQuality'       => 'system/modules/airquality/library/Respinar/AirQuality/Frontend/ModuleAirQuality.php',
-));
-
+ if (class_exists('NamespaceClassLoader')) {
+    NamespaceClassLoader::add('Respinar\AirQuality', 'system/modules/airquality/library');
+}
 
 /**
  * Register the templates
