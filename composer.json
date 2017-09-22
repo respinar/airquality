@@ -21,6 +21,11 @@
         "contao/core-bundle":"~3.5 || ~4.4",
         "contao-community-alliance/composer-plugin":"^2.4.1 || ~3.0"
     },
+    "autoload": {
+        "psr-0": {
+            "Respinar\\AirQuality\\": "library/"
+        }
+    },
     "extra": {
         "contao": {
             "sources": {
