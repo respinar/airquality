@@ -21,8 +21,17 @@ array_insert($GLOBALS['BE_MOD']['content'], 1, array
 	)
 ));
 
+
+/**
+ * Register models
+ */
+ $GLOBALS['TL_MODELS']['tl_airquality_city']    = 'Respinar\AirQuality\Model\AirQualityCityModel';
+ $GLOBALS['TL_MODELS']['tl_airquality_data']    = 'Respinar\AirQuality\Model\AirQualityDataModel';
+ $GLOBALS['TL_MODELS']['tl_airquality_station'] = 'Respinar\AirQuality\Model\AirQualityStationModel';
+
+
 /**
  * Front end modules
  */
-$GLOBALS['FE_MOD']['airquality']['mod_airquality_widget'] = 'Respinar\AirQuality\ModuleAirQualityWidget';
-$GLOBALS['FE_MOD']['airquality']['mod_airquality_chart']  = 'Respinar\AirQuality\ModuleAirQualityChart';
+$GLOBALS['FE_MOD']['airquality']['mod_airquality_widget'] = 'Respinar\AirQuality\Frontend\Module\ModuleAirQualityWidget';
+$GLOBALS['FE_MOD']['airquality']['mod_airquality_chart']  = 'Respinar\AirQuality\Frontend\Module\ModuleAirQualityChart';
