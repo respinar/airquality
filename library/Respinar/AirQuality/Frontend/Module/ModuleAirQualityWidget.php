@@ -15,7 +15,7 @@
 /**
  * Namespace
  */
-namespace Respinar\AirQuality;
+namespace Respinar\AirQuality\Frontend\Module;
 
 
 /**
