@@ -17,6 +17,12 @@
  */
 namespace Respinar\AirQuality\Frontend\Module;
 
+use Respinar\AirQuality\Model\AirQualityCityModel;
+use Respinar\AirQuality\Model\AirQualityDataModel;
+use Respinar\AirQuality\Model\AirQualityStationModel;
+
+use Respinar\AirQuality\AirQuality;
+
 
 /**
  * Class ModuleAirQualityChart
@@ -71,12 +77,12 @@ class ModuleAirQualityChart extends \Module
 
 		$this->Template->emptyAirQuality = $GLOBALS['TL_LANG']['MSC']['emptyAirQuality'];
 
-		$objAirQualityCity = \AirQualityCityModel::findById($this->airquality_city);
+		$objAirQualityCity = AirQualityCityModel::findById($this->airquality_city);
 
 		$this->Template->city   = $objAirQualityCity->title;
 		$this->Template->source = $objAirQualityCity->source;
 
-		$objAirQualityStaions = \AirQualityStationModel::findByPid($this->airquality_city);
+		$objAirQualityStaions = AirQualityStationModel::findByPid($this->airquality_city);
 
 		$arrCityAQI = array();
 
@@ -87,7 +93,7 @@ class ModuleAirQualityChart extends \Module
 			$arrStationAQI_COLOR = array();
 
 
-			$objAirQualityIndexs = \AirQualityDataModel::findByPid($objStation->id,30);
+			$objAirQualityIndexs = AirQualityDataModel::findByPid($objStation->id,30);
 
 			foreach($objAirQualityIndexs as $objAirQualityIndex)
 			{
