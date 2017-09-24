@@ -22,14 +22,14 @@
         "contao-community-alliance/composer-plugin":"^2.4.1 || ~3.0"
     },
     "autoload": {
-        "psr-0": {
-            "Respinar\\AirQuality\\": "library/"
+        "psr-4": {
+            "Respinar\\AirQuality\\": "src/library/"
         }
     },
     "extra": {
         "contao": {
             "sources": {
-                "": "system/modules/airquality"
+                "src": "system/modules/airquality"
             },
             "transifex": {
                 "project": "contao-airquality",
